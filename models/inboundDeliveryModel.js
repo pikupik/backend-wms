@@ -9,6 +9,8 @@ const getAllInboundDeliveries = async () => {
 
 // Filter inbound deliveries based on criteria (e.g., by supplier name or warehouse id)
 const filterInboundDeliveries = async (criteria) => {
+  
+  
   let query = 'SELECT * FROM inbound_deliveries WHERE 1=1';
   const values = [];
 
@@ -25,9 +27,9 @@ const filterInboundDeliveries = async (criteria) => {
     query += ' AND warehouse_id = ?';
     values.push(criteria.warehouse_id);
   }
-  if (criteria.expected_delivery_date) {  // Changed received_date to expected_delivery_date
-    query += ' AND expected_delivery_date = ?';
-    values.push(criteria.expected_delivery_date);
+  if (criteria.quantity_expected) {  // Changed received_date to expected_delivery_date
+    query += ' AND quantity_expected = ?';
+    values.push(criteria.quantity_expected);
   }
   // Add more filters as needed
 
